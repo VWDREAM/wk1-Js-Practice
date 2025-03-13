@@ -4,7 +4,7 @@ function calculateNetSalary(basicSalary, benefits){
     let grossSalary = basicSalary + benefits;
     console.log(`Gross Salary: ${grossSalary}`);
 
-//nssf
+//nssf has two calculations, tier1 limit is upto a gross salary of 8000 and tier 2 upto 72000
 const tier1 = 8000;
 const tier2 = 72000;
 
@@ -14,11 +14,16 @@ const nssfTier2 = grossSalary > tier1 ? Math.min(0.06 * (grossSalary - tier1), 0
 const nssfDeduction = nssfTier1 + nssfTier2;
 console.log(`NSSF Deduction: ${nssfDeduction}`);
 
-//nhif
+//nhif is 2.75% of grosssalary
 const nhifDeduction = grossSalary * 0.0275;
 console.log(`NHIF Deduction: ${nhifDeduction}`);
-//taxable income
-let taxableIncome = grossSalary - nssfDeduction - nhifDeduction;
+
+//housingLevy
+const housingLevy = grossSalary * 0.015;
+console.log(`Housing Levy: ${housingLevy}`);
+
+//taxable income since the deductions (nssf and nhif) are not taxable
+let taxableIncome = grossSalary - nssfDeduction - nhifDeduction - housingLevy;
 console.log(`Taxable Income: ${taxableIncome}`);
 let paye = 0;
 
@@ -44,15 +49,16 @@ if (taxableIncome > 0) {
 
 console.log(`PAYE Before Relief: ${paye}`);
 paye = Math.max(0, paye - 2400);
-const netSalary = grossSalary - (nssfDeduction + nhifDeduction + paye);
+const netSalary = grossSalary - (nssfDeduction + nhifDeduction + paye + housingLevy);
 console.log(`Net Salary: ${netSalary}`);
 return {
     grossSalary,
     nssfDeduction,
     nhifDeduction,
     paye,
+    housingLevy,
     netSalary
 };
 }
-const salaryDetails = calculateNetSalary(basicSalary, benefits);
+const salaryDetails = calculateNetSalary(50000, 10000);
 console.log(salaryDetails);
