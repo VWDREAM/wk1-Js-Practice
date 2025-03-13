@@ -1,8 +1,8 @@
-function gradeGenerator(){
-    let marks = prompt("Enter student marks(0-100:");
-    marks = Number(marks);
+function gradeGenerator(marks){
 
-    if(isNaN(marks) || marks < 0 || marks > 100){
+//create a function that grades the marks
+//checks if the input is not a number or if the marks are not between 0 to 100 prints invalid.
+if(isNaN(marks) || marks < 0 || marks > 100){
         console.log("Invalid Input! Please Enter  number between 0 and 100");
 
         return;
