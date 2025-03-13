@@ -18,7 +18,7 @@ console.log(`NSSF Deduction: ${nssfDeduction}`);
 const nhifDeduction = grossSalary * 0.0275;
 console.log(`NHIF Deduction: ${nhifDeduction}`);
 
-//housingLevy
+//housingLevy which is 1.5% of gross salary
 const housingLevy = grossSalary * 0.015;
 console.log(`Housing Levy: ${housingLevy}`);
 
