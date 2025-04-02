@@ -1,18 +1,32 @@
-function gradeGenerator(marks){
+function gradeGenerator() {
+    // Prompt user for input
+    let marks = prompt("Enter student marks (0-100):");
 
-//create a function that grades the marks
-//checks if the input is not a number or if the marks are not between 0 to 100 prints invalid.
-if(isNaN(marks) || marks < 0 || marks > 100){
-        console.log("Invalid Input! Please Enter  number between 0 and 100");
+    // Convert input to a number
+    marks = Number(marks);
 
+    // Validate input
+    if (isNaN(marks) || marks < 0 || marks > 100) {
+        console.log("Invalid Input! Please enter a number between 0 and 100.");
         return;
     }
+
+    // Determine grade
     let grade;
-    if (marks >79){ grade = "A";}
-    else if(marks <=79 && marks >= 60){grade = "B";}
-    else if(marks <= 59 && marks >=49){grade = "C";}
-    else if (marks < 49 && marks >=40){grade = "D";}
-    else if (marks < 40){grade = "E";}
+    if (marks > 79) {
+        grade = "A";
+    } else if (marks >= 60) {
+        grade = "B";
+    } else if (marks >= 50) {
+        grade = "C";
+    } else if (marks >= 40) {
+        grade = "D";
+    } else {
+        grade = "E";
+    }
+
     console.log(`The Student's grade is: ${grade}`);
 }
+
+// Call the function
 gradeGenerator();
